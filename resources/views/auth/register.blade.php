@@ -123,6 +123,17 @@
     <section class="login-form">
         <form method="post" action="{{ route('postRegister') }}" role="login">
             <h3><b>Register</b></h3>
+            @if ($errors->count() > 0)
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        @if ($error == 'The g-recaptcha-response field is required.')
+                            Captcha validation failed<br>
+                        @else
+                            {{ $error }}<br>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-xs-12">
@@ -140,6 +151,9 @@
                 <div class="col-xs-12">
                     <input type="password" name="password_confirmation" placeholder="Confirm Password" required class="form-control input-lg" />
                     <span class="glyphicon glyphicon-lock"></span>
+                </div>
+                <div class="col-xs-12">
+                    {!! app('captcha')->display(); !!}
                 </div>
             </div>
             <button type="submit" name="go" class="btn btn-lg btn-block btn-success">REGISTER</button>
