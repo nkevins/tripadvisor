@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateTripsTable extends Migration
+class UpdateTripsTableAddBufferColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class UpdateTripsTable extends Migration
     public function up()
     {
         Schema::table('trips', function ($table) {
-            $table->integer('user_id')->after('id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('buffer_time')->after('start_position')->default(0);
         });
     }
 
@@ -26,7 +25,7 @@ class UpdateTripsTable extends Migration
     public function down()
     {
         Schema::table('trips', function ($table) {
-            $table->dropColumn('user_id');
+            $table->dropColumn('buffer_time');
         });
     }
 }
