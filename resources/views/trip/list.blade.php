@@ -13,6 +13,7 @@
                     <th>Name</th>
                     <th>Starting Bus Stop</th>
                     <th>Bus No</th>
+                    <th>Buffer Time</th>
                     <th>Action</th>
                 </tr>
                 @foreach($trips as $t)
@@ -20,6 +21,7 @@
                         <td>{{ $t->name }}</td>
                         <td>{{ $t->start_position }}</td>
                         <td>{{ $t->bus }}</td>
+                        <td>{{ $t->buffer_time }}</td>
                         <td>
                             <form action="{{ route('deleteTrip', $t->id) }}" method="post">
                                 {{ csrf_field() }}
