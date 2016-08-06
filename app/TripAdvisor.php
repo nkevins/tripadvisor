@@ -30,19 +30,19 @@ class TripAdvisor
             {
                 if ($s->NextBus->EstimatedArrival != '')
                 {
-                    $b1 = new Bus($s->ServiceNo, $s->NextBus->EstimatedArrival, $s->NextBus->Latitude, $s->NextBus->Longitude);
+                    $b1 = new Bus($s->ServiceNo, $s->NextBus->EstimatedArrival, $s->NextBus->Latitude, $s->NextBus->Longitude, $s->NextBus->Load);
                     array_push($advise, $b1);
                 }
 
                 if ($s->SubsequentBus->EstimatedArrival != '')
                 {
-                    $b2 = new Bus($s->ServiceNo, $s->SubsequentBus->EstimatedArrival, $s->SubsequentBus->Latitude, $s->SubsequentBus->Longitude);
+                    $b2 = new Bus($s->ServiceNo, $s->SubsequentBus->EstimatedArrival, $s->SubsequentBus->Latitude, $s->SubsequentBus->Longitude, $s->SubsequentBus->Load);
                     array_push($advise, $b2);
                 }
 
                 if ($s->SubsequentBus3->EstimatedArrival != '')
                 {
-                    $b3 = new Bus($s->ServiceNo, $s->SubsequentBus3->EstimatedArrival, $s->SubsequentBus3->Latitude, $s->SubsequentBus3->Longitude);
+                    $b3 = new Bus($s->ServiceNo, $s->SubsequentBus3->EstimatedArrival, $s->SubsequentBus3->Latitude, $s->SubsequentBus3->Longitude, $s->SubsequentBus3->Load);
                     array_push($advise, $b3);
                 }
             }

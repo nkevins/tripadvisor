@@ -17,13 +17,15 @@ class Bus
     public $arrival_time;
     public $lat;
     public $lon;
+    public $load;
     public $status;
 
-    function __construct($no, $arrival_time, $lat, $lon)
+    function __construct($no, $arrival_time, $lat, $lon, $load)
     {
         $this->no = $no;
         $this->arrival_time = Carbon::parse($arrival_time);
         $this->lat = $lat;
         $this->lon = $lon;
+        $this->load = $load;
     }
 }

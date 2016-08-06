@@ -19,6 +19,7 @@
                         <th>Bus</th>
                         <th>Arrival Time</th>
                         <th>Diff</th>
+                        <th>Seat</th>
                         <th>Status</th>
                     </tr>
                     @foreach($advises as $a)
@@ -39,11 +40,25 @@
                             {
                                 $status = '';
                             }
+
+                            if ($a->load == 'Seats Available')
+                            {
+                                $load_status = 'success';
+                            }
+                            else if ($a->load == 'Standing Available')
+                            {
+                                $load_status = 'warning';
+                            }
+                            else
+                            {
+                                $load_status = 'danger';
+                            }
                         ?>
                         <tr class="{{ $status }}">
                             <td>{{ $a->no }}</td>
                             <td>{{ $a->arrival_time }}</td>
                             <td>{{ $now->diffInMinutes($a->arrival_time, false) }}</td>
+                            <td><span class="label label-{{$load_status}}">{{ $a->load }}</span></td>
                             <td>{{ $a->status }}</td>
                         </tr>
                     @endforeach
